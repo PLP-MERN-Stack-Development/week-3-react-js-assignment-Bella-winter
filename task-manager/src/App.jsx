@@ -1,33 +1,51 @@
+
 import { useState } from 'react';
 import './App.css';
 
 // Import your components here
+
 import Button from './components/Button';
 import Navbar from './components/Navbar';
  import Footer from './components/Footer';
  import TaskManager from './components/TaskManager';
  import Card from './components/Card';
+ import TaskList from './components/TaskList';
+
+
+
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleThemeToggle = () => {
+    const nextMode = !darkMode;
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle('dark', !nextMode);
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-
-      <header className="bg-white dark:bg-gray-800 shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold">PLP Task Manager</h1>
-        </div>
-        <Navbar/>
-      </header>
+   <div className="min-h-screen bg-gray-300 dark:bg-yellow-500 text-black-300 dark:text-black-900 transition-colors">
+      {/* Navbar */}
+      <Navbar
+        title="PLP Task Manager"
+        navItems={[
+          { text: 'Home', href: '#', active: true },
+          { text: 'Tasks', href: '#tasks' },
+          { text: 'About', href: '#about' }
+        ]}
+        isDarkMode={darkMode}
+        onThemeToggle={handleThemeToggle}
+        sticky
+      />
 
       <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <Card>
           <div className="flex flex-col items-center justify-center">
            <h2 className="text-xl font-bold mb-4">Welcome to PLP Task Manager</h2>
-           <p className="text-lg mb-2 text-gray-600 dark:text-gray-400">
+           {/* <p className="text-lg mb-2 text-gray-600 dark:text-gray-400">
              Edit <code className="font-mono bg-gray-200 dark:bg-gray-700 p-1 rounded">src/App.jsx</code> and save to test HMR.
-          </p>
+          </p> */}
          
             <div className="flex items-center gap-4 my-4">
               <button
@@ -53,13 +71,17 @@ export default function App() {
         </Card>
         
         
-        <div className="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg p-6">
+        <div className="mt-8 bg-gray-200 dark:bg-gray-100 overflow-hidden shadow rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">API Data</h2>
-          <p className="text-gray-500 dark:text-gray-400">
-            Fetch and display data from an API here
+
+          <p className="text-black-500 dark:text-white-300 mb-4">
+            Fetch and display data from an API here with a list from tasklist
           </p>
+          <TaskList/>
+
+        
         </div>
-        <ApiDataDisplay/>
+        
       </main>
 
       
@@ -75,8 +97,5 @@ export default function App() {
         </footer>
         
       </div>
-    // </ThemeProvider>
   );
 }
-
-
