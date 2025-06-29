@@ -55,10 +55,10 @@ http://localhost:5173
 🌙 Dark Mode  -  still working on this
 
 
-📜 License
+## 📜 License
 This project is licensed under the MIT License.
 
-🙋‍♀️ Author
+## 🙋‍♀️ Author
 work done with alot of effort, time and little help 
 by : Pauline Mwangi 
 
