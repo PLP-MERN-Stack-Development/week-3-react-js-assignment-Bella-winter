@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/week-3-react-js-assignment-Bella-winter/",
   plugins: [
     react(),
     tailwindcss()]
